@@ -1,3 +1,4 @@
+from dao.bookmarks_dao import BookmarksDAO
 from dao.posts_dao import PostsDAO
 from dao.comments_dao import CommentsDAO
 import pytest
@@ -9,3 +10,7 @@ def posts_dao():
 @pytest.fixture()
 def comments_dao():
     return CommentsDAO("data/comments.json")
+
+@pytest.fixture()
+def bookmarks_dao():
+    return BookmarksDAO("data/bookmarks.json")

@@ -53,3 +53,18 @@ class PostsDAO:
                 return post
 
         raise ValueError("Поста с таким идентификатором не найдено")
+
+    def get_post_by_tag(self, tag):
+        with open(self.path, encoding="utf-8") as file:
+            posts = json.load(file)
+
+        result = []
+
+        for post in posts:
+            if tag.lower() in post["content"].lower():
+                result.append(post)
+
+        if len(result) == 0:
+            raise ValueError("Не найдено постов по данному тегу")
+
+        return result
